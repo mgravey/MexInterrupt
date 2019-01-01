@@ -29,8 +29,8 @@ class mexInterrupt
 public:
 	inline static std::future<void> startInterruptCheck(std::atomic<bool> &done){
 		
-#if (!defined(MATLAB_COMPILE_VERSION) || (MATLAB_COMPILE_VERSION>=0x2018b))
-		if (runtimeMatlabVersion()>=0x2018b)
+#if (!defined(MATLAB_COMPILE_VERSION) || (MATLAB_COMPILE_VERSION>=0x2018a))
+		if (runtimeMatlabVersion()>=0x2018a)
 		{
 			auto interruptState=utGetInterruptStateData();
 			return std::async(std::launch::async, mexInterrupt::testIfInterupted, std::ref(done), interruptState);
